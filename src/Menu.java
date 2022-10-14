@@ -67,21 +67,43 @@ public class Menu {
 
     }
     public String toString(){
-        System.out.printf(carro.productes.toString());
+        System.out.printf(carro.productes.toString()+ "\n");
         return null;
     }
     public void start() {
         boolean menuOpt = true;
-        while (menuOpt) {
-            if (principal() == 1) {
-                if (producte() == 1) alimentacio();
-                else if (producte() == 2) textil();
-                else if (producte() == 3) electronica();
-            } else if (principal() == 2) System.out.println("2");
-            else if (principal() == 3) toString();
-            else if (principal() == 4) menuOpt = false;
-            else System.out.println("Opcion incorrecta");
+        int option;
+            while (menuOpt){
+            option= principal();
+            if (option == 1) {
+                int optionProducte;
+                  optionProducte=producte();
+                if (optionProducte == 1){
+                    alimentacio();
+                }
+                else if (optionProducte == 2){
+                    textil();
+                }
+                else if (optionProducte == 3){
+                    electronica();
+                }
+                else if (optionProducte == 4){
+                      continue;
+                }
+            }
+            else if (option == 2){
+                System.out.println("2");
+            }
+            else if (option == 3){
+                toString();
+            }
+            else if (option == 4){
+                menuOpt=false;
+            }
+            else {
+                System.out.println("Opcion incorrecta");
+            }
         }
     }
 
-    }
+}
