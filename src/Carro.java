@@ -82,5 +82,26 @@ public class Carro {
 
     }
 
+    public String imprimirCarro(List<Producte> carro) {
+        String mostraProductesCarro="";
+        int contadorArrayList=0;
+        ArrayList <Integer> totalProductes = new ArrayList<>();
+        List <Producte> productesCarro = new LinkedList<>();
+        for (int i = 0; i < carro.size(); i++) {
+            if (i!=carro.size()|| carro.get(i).getCodiDeBarres() == carro.get(i+1).getCodiDeBarres()) {
+                totalProductes.add(contadorArrayList, +1);
+            }
+                else {
+                productesCarro.add(carro.get(i));
+                contadorArrayList++;
+            }
+
+            }
+        for (int i = 0; i < productesCarro.size(); i++) {
+            mostraProductesCarro+= ""+ totalProductes.get(i)+" x "+ productesCarro.get(i).toString()+ "\n";
+
+        }
+        return mostraProductesCarro;
+    }
 
 }

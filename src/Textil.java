@@ -1,3 +1,5 @@
+import java.text.DecimalFormat;
+
 public class Textil extends Producte{
 
 
@@ -9,11 +11,14 @@ public class Textil extends Producte{
     }
     @Override
     public String toString() {
-        return "Textil{" +
-                "preu=" + getPreu() +
-                ", nom= " + getNom() +
-                ", codiDeBarres=" + getCodiDeBarres() +
-                ", composicio='" + composicio +
-                '}';
+        DecimalFormat df = new DecimalFormat("#.00");
+
+        return "Textil     |" +
+                " preu=" + df.format(getPreu()) +
+                "| nom= " + getNom() +
+                "| codiDeBarres= " + getCodiDeBarres() +
+                "| composicio= " + composicio +
+                '|';
+
     }
 }

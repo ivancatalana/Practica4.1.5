@@ -4,6 +4,8 @@ public class Menu {
         Scanner scanner=new Scanner(System.in);
         Carro carro=new Carro();
 
+
+// Metode per crear el menu principal
        public int principal(){
            System.out.printf("1. Introduir producte\n" +
                    "2. Passar per caixa\n"+
@@ -14,7 +16,9 @@ public class Menu {
            scanner.nextLine();
            return option;
        }
-       public int producte(){
+    // Metode per crear el menu per crear un producte
+
+    public int producte(){
            System.out.printf("1. Alimentació\n" +
                    "2. Tèxtil\n"+
                    "3. Electrònica\n"+
@@ -24,7 +28,9 @@ public class Menu {
            scanner.nextLine();
            return option;
        }
-       public void alimentacio (){
+    // Metode per crear el menu per crear un producte d'alimentació
+
+    public void alimentacio (){
            System.out.printf("Preu?");
            double preu=scanner.nextDouble();
            scanner.nextLine();
@@ -39,13 +45,16 @@ public class Menu {
            aliment.diesCaducitat(diesDeCaducitat);
            carro.afegirProducte(aliment);
        }
+
+       // Metode per crear el menu per crear un producte textil
+
     public void textil () {
         System.out.printf("Preu?");
         int preu = scanner.nextInt();
         scanner.nextLine();
-        System.out.printf("Nom?");
+        System.out.printf("Nom? \n");
         String nom = scanner.nextLine();
-        System.out.printf("Codi de barres?");
+        System.out.printf("Codi de barres? \n");
         int codiDeBarres = scanner.nextInt();
         scanner.nextLine();
         System.out.printf("Composició textil?");
@@ -53,6 +62,8 @@ public class Menu {
         Textil textil = new Textil(preu, nom, codiDeBarres, composicio );
         carro.afegirProducte(textil);
     }
+    // Metode per crear el menu per crear un producte d'electronica
+
     public void electronica () {
         System.out.printf("Preu?");
         int preu = scanner.nextInt();
@@ -69,10 +80,13 @@ public class Menu {
         carro.afegirProducte(electronica);
 
     }
+
     public String toString(){
         System.out.printf(carro.getProductes().toString()+ "\n");
         return null;
     }
+    // Metode per crear el menu a un bucle i anar fent l'us del programa
+
     public void start() {
         boolean menuOpt = true;
         int option;
@@ -94,8 +108,11 @@ public class Menu {
                       continue;
                 }
             }
+            //Aquí cuan demanem pagar i buidar el carro
             else if (option == 2){
-                System.out.println("2");
+                Tiquet tiquet = new Tiquet();
+                System.out.println(tiquet.imprimirTiquet(carro.getProductes()));
+                carro.getProductes().removeAll(carro.getProductes());
             }
             else if (option == 3) {
                 System.out.println(carro.mostrarCarro());
@@ -119,6 +136,9 @@ public class Menu {
                 Tiquet tiquet = new Tiquet();
                 System.out.println(tiquet.imprimirTiquet(carro.getProductes()));
 
+                System.out.println("Mostramos Carro");
+                System.out.println(carro.imprimirCarro(carro.getProductes()));
+
             }
             else if (option == 4){
                 menuOpt=false;
@@ -128,5 +148,4 @@ public class Menu {
             }
         }
     }
-
 }

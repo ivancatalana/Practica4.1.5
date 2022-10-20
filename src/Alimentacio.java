@@ -1,3 +1,5 @@
+import java.text.DecimalFormat;
+
 public class Alimentacio extends Producte{
     private int diesCaducitat;
 
@@ -16,12 +18,14 @@ public class Alimentacio extends Producte{
     }
     @Override
     public String toString() {
-        return "Alimentacio{" +
-                "preu=" + getPreu() +
-                ", nom= " + getNom() +
-                ", codiDeBarres=" + getCodiDeBarres() +
-                ", diesCaducitat=" + diesCaducitat +
-                '}';
+        DecimalFormat df = new DecimalFormat("#.00");
+
+        return "Alimentacio |" +
+                " preu=" + df.format(getPreu()) +
+                "| nom= " + getNom() +
+                "| codiDeBarres=" + getCodiDeBarres() +
+                "| diesCaducitat=" + diesCaducitat +
+                '|';
     }
 
 }

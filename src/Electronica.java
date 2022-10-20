@@ -1,3 +1,5 @@
+import java.text.DecimalFormat;
+
 public class Electronica extends Producte{
 
     private int diesGarantia;
@@ -23,11 +25,13 @@ public class Electronica extends Producte{
     }
     @Override
     public String toString() {
-        return "Electronica{" +
-                "preu=" + getPreu() +
-                ", nom= " + getNom() +
-                ", codiDeBarres=" + getCodiDeBarres() +
-                ", diesGarantia=" + diesGarantia +
-                '}';
+        DecimalFormat df = new DecimalFormat("#.00");
+        return "Electronica |" +
+                " preu=" + df.format(getPreu()) +
+                "| nom= " + getNom() +
+                "| codiDeBarres=" + getCodiDeBarres() +
+                "| diesGarantia=" + diesGarantia +
+                '|';
+
     }
 }
