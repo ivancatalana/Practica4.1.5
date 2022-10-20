@@ -2,8 +2,10 @@ public class Electronica extends Producte{
 
     private int diesGarantia;
 
-    public Electronica(int preu, String nom, int codiDeBarres,int diesGarantia) {
-        super();
+
+
+    public Electronica(double preu, String nom, int codiDeBarres, int diesGarantia) {
+        super(preu, nom, codiDeBarres);
         this.diesGarantia=diesGarantia;
     }
     public int getDiesGarantia() {
@@ -13,5 +15,19 @@ public class Electronica extends Producte{
     public void setDiesGarantia(int diesGarantia) {
         this.diesGarantia = diesGarantia;
     }
-
+    public void preuDiesGarantia(int diesGarantia){
+        double preuFinal;
+        double preuActual = this.getPreu();
+        preuFinal = preuActual +  (preuActual *(diesGarantia/365)*0.1);
+        this.setPreu(preuFinal);
+    }
+    @Override
+    public String toString() {
+        return "Electronica{" +
+                "preu=" + getPreu() +
+                ", nom= " + getNom() +
+                ", codiDeBarres=" + getCodiDeBarres() +
+                ", diesGarantia=" + diesGarantia +
+                '}';
+    }
 }
