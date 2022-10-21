@@ -49,6 +49,7 @@ public class Producte implements Comparator<Producte> {
 
       @Override
       public int compare(Producte o1, Producte o2) {
+
             return 0;
       }
       @Override

@@ -4,7 +4,6 @@ public class Menu {
         Scanner scanner=new Scanner(System.in);
         Carro carro=new Carro();
 
-
 // Metode per crear el menu principal
        public int principal(){
            System.out.printf("1. Introduir producte\n" +
@@ -31,15 +30,15 @@ public class Menu {
     // Metode per crear el menu per crear un producte d'alimentació
 
     public void alimentacio (){
-           System.out.printf("Preu?");
+           System.out.printf("Preu?\n");
            double preu=scanner.nextDouble();
            scanner.nextLine();
-           System.out.printf("Nom?");
+           System.out.printf("Nom?\n");
            String nom=scanner.nextLine();
-           System.out.printf("Codi de barres?");
+           System.out.printf("Codi de barres?\n");
            int codiDeBarres=scanner.nextInt();
            scanner.nextLine();
-           System.out.printf("Dies per complir caducitat?");
+           System.out.printf("Dies per complir caducitat?\n");
            int diesDeCaducitat=scanner.nextInt();
            Alimentacio aliment = new Alimentacio(preu,nom,codiDeBarres,diesDeCaducitat);
            aliment.diesCaducitat(diesDeCaducitat);
@@ -49,7 +48,7 @@ public class Menu {
        // Metode per crear el menu per crear un producte textil
 
     public void textil () {
-        System.out.printf("Preu?");
+        System.out.printf("Preu?\n");
         int preu = scanner.nextInt();
         scanner.nextLine();
         System.out.printf("Nom? \n");
@@ -57,7 +56,7 @@ public class Menu {
         System.out.printf("Codi de barres? \n");
         int codiDeBarres = scanner.nextInt();
         scanner.nextLine();
-        System.out.printf("Composició textil?");
+        System.out.printf("Composició textil?\n");
         String composicio = scanner.nextLine();
         Textil textil = new Textil(preu, nom, codiDeBarres, composicio );
         carro.afegirProducte(textil);
@@ -65,15 +64,15 @@ public class Menu {
     // Metode per crear el menu per crear un producte d'electronica
 
     public void electronica () {
-        System.out.printf("Preu?");
+        System.out.printf("Preu?\n");
         int preu = scanner.nextInt();
         scanner.nextLine();
-        System.out.printf("Nom?");
+        System.out.printf("Nom?\n");
         String nom = scanner.nextLine();
-        System.out.printf("Codi de barres?");
+        System.out.printf("Codi de barres?\n");
         int codiDeBarres = scanner.nextInt();
         scanner.nextLine();
-        System.out.printf("Dies de garantia?");
+        System.out.printf("Dies de garantia?\n");
         int diesGarantia = scanner.nextInt();
         Electronica electronica = new Electronica(preu, nom, codiDeBarres, diesGarantia );
         electronica.preuDiesGarantia(diesGarantia);
@@ -115,29 +114,13 @@ public class Menu {
                 carro.getProductes().removeAll(carro.getProductes());
             }
             else if (option == 3) {
-                System.out.println(carro.mostrarCarro());
-                Set<Producte> freq = new HashSet<>(carro.getProductes());
-
-                for (Producte l: carro.getProductes()){
-                    System.out.println(Collections.frequency(carro.getProductes(),l));
-                }
-                System.out.println("Repetits NO: ");
-                carro.repetitsNo();
-                Set<Producte> repetitsNo = new HashSet<>(carro.getProductes());
-
-                System.out.println("\nRepetits NO amb cuantitat : ");
-
-                for (int i = 0; i < repetitsNo.size(); i++) {
-
-
-                    System.out.println("cuantitat: "+Collections.frequency(carro.getProductes(), carro.getProductes().get(i))+" tipus de producte: "+ carro.getProductes().get(i).toString());
-                }
-                System.out.println(carro.mostrarCarro());
-                Tiquet tiquet = new Tiquet();
-                System.out.println(tiquet.imprimirTiquet(carro.getProductes()));
 
                 System.out.println("Mostramos Carro");
-                System.out.println(carro.imprimirCarro(carro.getProductes()));
+               // carro.imprimirMapCarrito();
+               // carro.contarFrecuenciaMap();
+            //    System.out.println(carro.imprimirCarroMap(carro.getProductes()));
+               // System.out.println(carro.tiquet());
+                System.out.println(carro.mostrarProductesFrequenciaCarro());
 
             }
             else if (option == 4){

@@ -7,30 +7,39 @@ import java.util.*;
 
 public class Tiquet {
     public Tiquet(){
-     Carro carro;
-
     }
     public String imprimirTiquet(List<Producte> productesCarro){
 
+        Collections.sort(productesCarro
+                , new Comparator<Producte>() {
+                    @Override
+                    public int compare(Producte o1, Producte o2) {
+                        if (o1.getCodiDeBarres() > o2.getCodiDeBarres()) return -1;
+                        else if (o1.getCodiDeBarres() < o2.getCodiDeBarres()) return 1;
+
+                        else return 0;                    }
+                });
         Set<Producte> tiquet = new HashSet<>(productesCarro);
+         tiquet.addAll(productesCarro);
+        int codideBarres=0;
 
         LocalDateTime localDateTime = LocalDateTime.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy'   'HH':'mm");
+        DecimalFormat df = new DecimalFormat("#.00");
 
 
         String tiquetString="          Tiquet del Supermercat SuperPuig\nData: "+ localDateTime.format(formatter)+"\n\n" +
                 "      LLISTAT DE PRODUCTES            \n--------------------------------------------\n";
+        for (int i = 0; i < productesCarro.size(); i++) {
 
-        for (int i = 0; i < tiquet.size(); i++) {
-
-
-           tiquetString+= ""+ Collections.frequency(productesCarro, productesCarro.get(i))+" x   |  "+ productesCarro.get(i).toString()+"\n";
+            if (productesCarro.get(i).getCodiDeBarres() != codideBarres) {
+                codideBarres=productesCarro.get(i).getCodiDeBarres();
+                tiquetString += "" + Collections.frequency(productesCarro, productesCarro.get(i)) + " x   |  Import Total= "+df.format(productesCarro.get(i).getPreu()*Collections.frequency(productesCarro, productesCarro.get(i)))+ "  |  "+productesCarro.get(i).toString() + "\n";
+            }
         }
-
         //Calcularem l'import total a pagar;
         double[] preuTotaldelsArticles = new double[productesCarro.size()];
         double cuantitatTotalPagar= 0;
-        DecimalFormat df = new DecimalFormat("#.00");
 
         for (int i = 0; i < productesCarro.size(); i++) {
             preuTotaldelsArticles[i] = productesCarro.get(i).getPreu();
