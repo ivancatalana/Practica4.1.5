@@ -106,7 +106,7 @@ public class Carro {
             comprobarNoRepetidos.put(freqProductes.get(i),freqProductes.get(i).p.getCodiDeBarres());
         }
       //  for (int i = 0; i < comprobarNoRepetidos.size(); i++) {
-            System.out.println(""+ comprobarNoRepetidos.keySet().toString().replaceAll(", ",""));
+          //  System.out.println(""+ comprobarNoRepetidos.keySet().toString().replaceAll(", ",""));
 
         Map< Integer, FreqProductes > mp = new HashMap< Integer, FreqProductes>();
         for (int i = 0; i < freqProductes.size(); i++) {
@@ -122,7 +122,7 @@ public class Carro {
 
                         else return 0;                    }
                 });
-          String tiquet="";
+          String tiquet="          Productes al carret\n";
         int codideBarres=0;
         double preu=0;
         ArrayList <FreqProductes> freqProductesFinal=new ArrayList<>();
@@ -132,7 +132,6 @@ public class Carro {
         for (int i = 0; i < freqProductesFinal.size(); i++) {
             if (freqProductesFinal.get(i).p.getCodiDeBarres()==codideBarres)freqProductesFinal.remove(i);
         }
-        System.out.println(freqProductesFinal.toString());
         Set <FreqProductes> repetitsNo = new HashSet<>(freqProductesFinal);
         tiquet+= repetitsNo.toString().replaceAll(", ","");
 

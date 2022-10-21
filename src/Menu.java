@@ -115,11 +115,6 @@ public class Menu {
             }
             else if (option == 3) {
 
-                System.out.println("Mostramos Carro");
-               // carro.imprimirMapCarrito();
-               // carro.contarFrecuenciaMap();
-            //    System.out.println(carro.imprimirCarroMap(carro.getProductes()));
-               // System.out.println(carro.tiquet());
                 System.out.println(carro.mostrarProductesFrequenciaCarro());
 
             }
